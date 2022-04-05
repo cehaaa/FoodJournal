@@ -6,55 +6,43 @@
 //
 
 import SwiftUI
-import PhotosUI
-
-struct ImagePicker: UIViewControllerRepresentable {
-    @Binding var image: UIImage?
-
-    func makeUIViewController(context: Context) -> PHPickerViewController {
-        var config = PHPickerConfiguration()
-        config.filter = .images
-        let picker = PHPickerViewController(configuration: config)
-        picker.delegate = context.coordinator
-        return picker
-    }
-
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
-
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        let parent: ImagePicker
-
-        init(_ parent: ImagePicker) {
-            self.parent = parent
-        }
-
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            picker.dismiss(animated: true)
-
-            guard let provider = results.first?.itemProvider else { return }
-
-            if provider.canLoadObject(ofClass: UIImage.self) {
-                provider.loadObject(ofClass: UIImage.self) { image, _ in
-                    self.parent.image = image as? UIImage
-                }
-            }
-        }
-    }
-}
-
 
 struct ConsumedForm: View {
     
-    @State var showingImagePicker: Bool = false
+    @State private var image: Image?
+    @State private var showImagePicker: Bool = false
+    @State private var inputImage: UIImage?
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {            
+            ZStack {
+                Rectangle()
+                    .fill( .bar)
+                    .frame(width: 360, height: 200)
+                    .cornerRadius(10)
+                
+                Label("Select an image", systemImage: "photo.fill")
+                    .font(.title3)
+                
+                image?
+                    .resizable()
+                    .frame(width: 360, height: 200)
+                    .cornerRadius(10)
+            }
+            .onTapGesture {
+                showImagePicker = true
+            }
+        
+        }
+        .onChange(of: inputImage) { _ in loadImage()}
+        .sheet(isPresented: $showImagePicker){
+            ImagePicker(image: $inputImage)
+        }
+    }
+     
+    func loadImage() -> Void {
+        guard let inputImage = inputImage else {return}
+        image = Image(uiImage: inputImage)
     }
 }
 
