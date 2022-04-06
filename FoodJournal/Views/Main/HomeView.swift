@@ -14,20 +14,7 @@ struct HomeView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     
-//                    HStack(){
-//                        Text("hello")
-//                            .padding(.horizontal)
-//
-//                        Spacer()
-//
-//                        Text("hello")
-//                            .padding(.horizontal)
-//                    }
-//                    .frame(width: 360, height: 120, alignment:.leading)
-//                    .background(.bar)
-//                    .cornerRadius(10.0)
-                    
-                    NavigationLink(destination: DailyRecap()){
+                    NavigationLink(destination: FormView()){
                         Text("Add meal")
                     }
                     

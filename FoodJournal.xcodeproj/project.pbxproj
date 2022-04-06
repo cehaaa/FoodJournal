@@ -20,10 +20,13 @@
 		3928F3C127F9FBEB00000143 /* AllRecapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928F3C027F9FBEB00000143 /* AllRecapCard.swift */; };
 		3928F3C327F9FC2B00000143 /* AllRecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928F3C227F9FC2B00000143 /* AllRecapView.swift */; };
 		3990657F27FB2D79001043EF /* TodayMealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3990657E27FB2D79001043EF /* TodayMealModel.swift */; };
+		39D9D5B527FDB7C000CF846F /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D9D5B427FDB7C000CF846F /* FormView.swift */; };
+		39D9D5B727FDBC6000CF846F /* GlobalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D9D5B627FDBC6000CF846F /* GlobalEnum.swift */; };
+		39D9D5BA27FDBEB200CF846F /* MealFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D9D5B927FDBEB200CF846F /* MealFormView.swift */; };
+		39D9D5BC27FDBEC500CF846F /* BeverageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D9D5BB27FDBEC500CF846F /* BeverageFormView.swift */; };
 		39ECE82027F99B71002EBEAF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ECE81F27F99B71002EBEAF /* TabBar.swift */; };
 		39ECE82227F99D78002EBEAF /* RecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ECE82127F99D78002EBEAF /* RecapView.swift */; };
 		39F353A427FC9D09004C552B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F353A327FC9D09004C552B /* ImagePicker.swift */; };
-		39F353A627FC9D21004C552B /* ConsumedForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F353A527FC9D21004C552B /* ConsumedForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,10 +44,13 @@
 		3928F3C027F9FBEB00000143 /* AllRecapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecapCard.swift; sourceTree = "<group>"; };
 		3928F3C227F9FC2B00000143 /* AllRecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecapView.swift; sourceTree = "<group>"; };
 		3990657E27FB2D79001043EF /* TodayMealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMealModel.swift; sourceTree = "<group>"; };
+		39D9D5B427FDB7C000CF846F /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		39D9D5B627FDBC6000CF846F /* GlobalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEnum.swift; sourceTree = "<group>"; };
+		39D9D5B927FDBEB200CF846F /* MealFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFormView.swift; sourceTree = "<group>"; };
+		39D9D5BB27FDBEC500CF846F /* BeverageFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeverageFormView.swift; sourceTree = "<group>"; };
 		39ECE81F27F99B71002EBEAF /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		39ECE82127F99D78002EBEAF /* RecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapView.swift; sourceTree = "<group>"; };
 		39F353A327FC9D09004C552B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		39F353A527FC9D21004C552B /* ConsumedForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,7 @@
 		3928F3BB27F9C38200000143 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				39D9D5B827FDBCF300CF846F /* TabBar */,
 				3990659E27FC9BF6001043EF /* ImagePicker */,
 				3928F3C527FA011600000143 /* AllRecap */,
 				3928F3C427FA010500000143 /* TodayMeal */,
@@ -145,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				3990657E27FB2D79001043EF /* TodayMealModel.swift */,
+				39D9D5B627FDBC6000CF846F /* GlobalEnum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,15 +165,24 @@
 			path = ImagePicker;
 			sourceTree = "<group>";
 		};
+		39D9D5B827FDBCF300CF846F /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				39ECE81F27F99B71002EBEAF /* TabBar.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		39ECE81E27F99B49002EBEAF /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				3902934027F982CC00B8C8E9 /* ContentView.swift */,
-				39ECE81F27F99B71002EBEAF /* TabBar.swift */,
 				3906417D27F984510024B1FA /* HomeView.swift */,
 				3906417F27F9853B0024B1FA /* DailyRecapView.swift */,
 				39ECE82127F99D78002EBEAF /* RecapView.swift */,
-				39F353A527FC9D21004C552B /* ConsumedForm.swift */,
+				39D9D5B427FDB7C000CF846F /* FormView.swift */,
+				39D9D5B927FDBEB200CF846F /* MealFormView.swift */,
+				39D9D5BB27FDBEC500CF846F /* BeverageFormView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -242,18 +259,21 @@
 			files = (
 				3928F3B827F9BEA900000143 /* DailyRecap.swift in Sources */,
 				3928F3BD27F9C48800000143 /* TodayMealScrollView.swift in Sources */,
-				39F353A627FC9D21004C552B /* ConsumedForm.swift in Sources */,
 				3928F3C127F9FBEB00000143 /* AllRecapCard.swift in Sources */,
 				39F353A427FC9D09004C552B /* ImagePicker.swift in Sources */,
 				3906418027F9853B0024B1FA /* DailyRecapView.swift in Sources */,
 				3906417E27F984510024B1FA /* HomeView.swift in Sources */,
+				39D9D5BC27FDBEC500CF846F /* BeverageFormView.swift in Sources */,
 				3990657F27FB2D79001043EF /* TodayMealModel.swift in Sources */,
+				39D9D5B527FDB7C000CF846F /* FormView.swift in Sources */,
 				3902934127F982CC00B8C8E9 /* ContentView.swift in Sources */,
 				3902933F27F982CC00B8C8E9 /* FoodJournalApp.swift in Sources */,
+				39D9D5BA27FDBEB200CF846F /* MealFormView.swift in Sources */,
 				39ECE82227F99D78002EBEAF /* RecapView.swift in Sources */,
 				3928F3C327F9FC2B00000143 /* AllRecapView.swift in Sources */,
 				39ECE82027F99B71002EBEAF /* TabBar.swift in Sources */,
 				3928F3BF27F9C4A400000143 /* TodayMealCard.swift in Sources */,
+				39D9D5B727FDBC6000CF846F /* GlobalEnum.swift in Sources */,
 				3928F3BA27F9BFB700000143 /* TodayRecap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
