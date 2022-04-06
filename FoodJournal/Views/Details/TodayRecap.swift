@@ -50,10 +50,6 @@ struct TodayRecap: View {
                                             Text(reflection)
                                                 .padding(.horizontal, 10)
                                                 .padding(.vertical, 5)
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .stroke(.blue, lineWidth: 2)
-                                                )
                                                 .background(.blue)
                                                 .foregroundColor(.white)
                                                 .cornerRadius(20)

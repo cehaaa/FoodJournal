@@ -25,19 +25,31 @@ struct FormView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators:  false){
             VStack {
-                
+
                 Picker("Choose a category", selection: $selectedForm) {
                     ForEach(FormCategory.allCases, id: \.self){
                         Text($0.rawValue)
                     }
                 }
                 .pickerStyle(.segmented)
-                
+
                 ChoosenForm(selectedForm: selectedForm)
-                
+
             }
             .padding()
         }
+        
+//        VStack {
+//            Picker("Choose a category", selection: $selectedForm) {
+//                ForEach(FormCategory.allCases, id: \.self){
+//                    Text($0.rawValue)
+//                }
+//            }
+//            .pickerStyle(.segmented)
+//
+//            ChoosenForm(selectedForm: selectedForm)
+//        }
+//        .padding()
     }
 }
 
@@ -58,5 +70,6 @@ struct ChoosenForm: View {
 struct FormView_Previews: PreviewProvider {
     static var previews: some View {
         FormView()
+            .preferredColorScheme(.light)
     }
 }
