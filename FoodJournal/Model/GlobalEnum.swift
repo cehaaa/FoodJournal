@@ -8,8 +8,8 @@
 import Foundation
 
 enum FormCategory: String, CaseIterable {
-    case meal = "meal"
-    case beverage = "beverage"
+    case meal = "Meal"
+    case beverage = "Beverage"
 }
 
 enum Category: String {
