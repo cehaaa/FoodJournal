@@ -9,11 +9,12 @@ import SwiftUI
 
 struct TodayRecap: View {
     
+    @Binding var todayMeals: [TodayMeals]
+    
     var body: some View {
         ScrollView (.vertical, showsIndicators: false) {
             LazyVStack(spacing: 40) {
-                ForEach(TodayMeals.all, id: \.id){ meal in
-                    
+                ForEach(todayMeals, id: \.id){ meal in
                     VStack(alignment: .leading){
                         Image(meal.image)
                             .resizable()
@@ -38,7 +39,11 @@ struct TodayRecap: View {
                                         .bold()
                                         .padding(.bottom, 2)
                                     
-                                    Text("😊")
+                                    Text(
+                                        meal.feeling == "happy"
+                                        ? "😀"
+                                        : (meal.feeling == "sad") ? "🙁" : "🥰"
+                                    )
                                 }
                                 
                                 VStack(alignment: .leading) {
@@ -60,14 +65,18 @@ struct TodayRecap: View {
                         }
                     }
                 }
+                
+                Button("Today recap"){
+                    
+                }
             }
         }
     }
 }
 
 struct TodayRecap_Previews: PreviewProvider {
-    static var previews: some View {
-//        TodayRecap(todayMeals: TodayMeals.all[0])
-        TodayRecap()
+    
+    @State private static var dummy: [TodayMeals] = []
+    static var previews: some View {        TodayRecap(todayMeals: $dummy)
     }
 }

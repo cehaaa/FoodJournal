@@ -19,30 +19,21 @@ struct HomeView: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    
-                    NavigationLink(destination: FormView(todayMeals: $todayMealsDummy)){
-                        Text("Add meal")
-                    }
-                    
-//                    NavigationLink(destination: FormView()){
-//                        Text("Add meal")
-//                    }
-                    
                     // today meal title section
                     HStack(alignment: .center) {
                         Text("Today meals")
                             .font( .title3)
                             .bold()
-
+                        
                         Spacer()
-
+                        
                         NavigationLink(destination: TodayRecap(todayMeals: $todayMealsDummy)){
                             Text("view more")
                         }
                     }
                     .padding(.top, 30)
                     // end today meal title section
-
+                    
                     // today meal collections
                     TodayMealScrollView(todayMeals: todayMealsDummy)
                     // end today meal collections
@@ -70,26 +61,14 @@ struct HomeView: View {
                 .padding(.horizontal)
             }
             .navigationTitle(Text("Home"))
-//            .overlay(
-//                AddButton()
-//                    .padding(.trailing)
-//                    .offset(x:0, y:-60)
-//                , alignment: .topTrailing
-//            )
+            .toolbar {
+                NavigationLink(destination: FormView(todayMeals: $todayMealsDummy)){
+                    Label("capture", systemImage: "plus.square.fill")
+                }            }
+            .navigationViewStyle(.stack)
         }
-        .navigationViewStyle(.stack)
     }
 }
-
-//struct AddButton: View {
-//    var body: some View {
-//        NavigationLink(destination: DailyRecap()){
-//            Circle()
-//                .frame(width: 50, height: 50)
-//                .foregroundColor(.blue)
-//        }
-//    }
-//}
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

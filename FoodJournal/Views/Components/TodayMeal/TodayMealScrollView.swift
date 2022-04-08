@@ -14,17 +14,10 @@ struct TodayMealScrollView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
             LazyHStack {
-                ForEach(TodayMeals.all, id: \.id){ meal in
+                ForEach(todayMeals, id: \.id){ meal in
                     TodayMealCard(todayMeals: meal)
                 }
             }
         }
-    }
-}
-
-
-struct TodayMealScrollView_Previews: PreviewProvider {
-    static var previews: some View {
-        TodayMealScrollView(todayMeals: TodayMeals.all)
     }
 }

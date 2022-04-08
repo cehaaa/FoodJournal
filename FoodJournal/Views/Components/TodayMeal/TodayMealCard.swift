@@ -28,10 +28,3 @@ struct TodayMealCard: View {
         }
     }
 }
-
-struct TodayMealCard_Previews: PreviewProvider {
-    static var previews: some View {
-        TodayMealCard(todayMeals: TodayMeals.all[0])
-//        TodayMealCard()
-    }
-}

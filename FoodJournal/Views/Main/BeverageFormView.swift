@@ -38,7 +38,6 @@ struct BeverageFormView: View {
     ]
     
     var body: some View {
-        
         Form {
             Section {
                 // Image picker
