@@ -9,43 +9,55 @@ import SwiftUI
 
 struct MealFormView: View {
     
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
     @State private var image: Image?
     @State private var showImagePicker: Bool = false
     @State private var inputImage: UIImage?
     
     @State private var time: Date = Date.now
     @State private var name: String = ""
+    @State private var feeling: String = ""
     
     @State private var showSelectReflections: Bool = false
     @State private var selectedReflection: [String] = []
     
-//    @State private var selectedReflections = Set<String>()
+    @State private var showSelectFeelings: Bool = false
+    @State private var selectedFeeling: String?
+    
+    @Binding var todayMeals: [TodayMeals]
     
     let reflections: [String] = [
-        "hungry", "It was time", "Social", "Stressed", "Bored", "Love the taste", "Cravings", "Tired"
+        "Hungry", "It was time", "Social", "Stressed", "Bored", "Love the taste", "Cravings", "Tired"
     ]
     
-//    let rows: [GridItem] = [GridItem(.adaptive(minimum: 35))]
+    let feelings: [String] = [
+        "sad", "happy", "greatful"
+    ]
+    
+    let listOfImage: [String] = [
+        "Dimsum", "Omelete", "Pancake", "Ramen", "Spagethi"
+    ]
     
     var body: some View {
-        
-//        ScrollView(.vertical, showsIndicators: false){
-            VStack {
+        Form {
+            Section {
                 
-                // image picker
+                // Image picker
                 VStack {
                     ZStack {
                         Rectangle()
                             .fill( .bar)
-                            .frame(width: 360, height: 200)
+                            .frame(width: 310, height: 200)
                             .cornerRadius(10)
                         
                         Label("Select an image", systemImage: "photo.fill")
                             .font(.body)
+                            .foregroundColor(Color.black.opacity(0.6))
                         
                         image?
                             .resizable()
-                            .frame(width: 360, height: 200)
+                            .frame(width: 310, height: 200)
                             .cornerRadius(10)
                     }
                     .onTapGesture {
@@ -56,28 +68,23 @@ struct MealFormView: View {
                 .sheet(isPresented: $showImagePicker){
                     ImagePicker(image: $inputImage)
                 }
-                .padding(.vertical)
-                
-                // Date picker
-                DatePicker("Select a time", selection: $time, displayedComponents: .hourAndMinute)
-                    .padding(.bottom)
-                
-                // Meal name
-                TextField("Food name", text: $name)
-                    .padding()
-                    .background(
-                        Color.gray.opacity(0.1)
-                        .cornerRadius(10)
-                    )
-                    .font(.headline)
-                    .foregroundColor(.black)
+                .padding(.vertical, 10)
+            }
+            
+            Section{
+                // Name
+                TextField("Ramen", text: $name)
                     .disableAutocorrection(true)
-                    .padding(.bottom)
                 
+                // Date
+                DatePicker("Select a time", selection: $time, displayedComponents: .hourAndMinute)
+            }
+            
+            Section{
+                // Reflection
                 VStack {
                     HStack {
                         Text("Reflections")
-                            .font(.headline)
                         
                         Spacer()
                         
@@ -89,102 +96,103 @@ struct MealFormView: View {
                     }
                     
                     VStack (alignment: .leading) {
-                        HStack {
-                            ForEach(selectedReflection, id: \.self){ selected in
-                                Text(selected)
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 5)
-                                    .background(.blue)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(20)
-                                
+                        if(selectedReflection.count > 0){
+                            HStack {
+                                ForEach(selectedReflection, id: \.self){ selected in
+                                    Text(selected)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 5)
+                                        .background(.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(20)
+                                }
+                                .padding( .bottom, 10)
+                                Spacer()
                             }
-                            Spacer()
                         }
                     }
                 }
-                .padding(.bottom)
+                .padding(.top, 10)
                 .sheet(isPresented: $showSelectReflections){
-//                selection: $selectedReflections
                     List{
                         ForEach(reflections, id: \.self){ reflection in
-//                            Text(reflection)
                             MultipleReflectionSelection(title: reflection, isSelected: self.selectedReflection.contains(reflection)){
                                 if self.selectedReflection.contains(reflection){
                                     self.selectedReflection.removeAll(where: {$0 == reflection})
                                 } else {
-                                    self.selectedReflection.append(reflection)
+                                    if (self.selectedReflection.count < 3) {
+                                        self.selectedReflection.append(reflection)
+                                    }
                                 }
                             }
                         }
                     }
                 }
                 
-                VStack(alignment: .leading) {
-                    Text("How you feel ?")
-                        .font(.headline)
+                VStack {
                     HStack {
-                        Text("🙁")
-                            .frame(width: 100, height: 100)
-                            .background(.gray.opacity(0.1))
-                            .font(.largeTitle)
-                            .cornerRadius(10)
+                        Text("Feelings")
+                        
+                        Spacer()
+                        
+                        Text("Select")
+                            .foregroundColor(.blue)
                             .onTapGesture {
-                                
+                                showSelectFeelings = true
                             }
-                        
-                        Spacer()
-                        
-                        Text("😀")
-                            .frame(width: 100, height: 100)
-                            .background(.gray.opacity(0.1))
-                            .font(.largeTitle)
-                            .cornerRadius(10)
-                        
-                        Spacer()
-                        
-                        Text("🥰")
-                            .frame(width: 100, height: 100)
-                            .background(.gray.opacity(0.1))
-                            .font(.largeTitle)
-                            .cornerRadius(10)
+                    }
+                    
+
+                    VStack(alignment: .leading) {
+//                        Text("You're feeling \(selectedFeeling ?? "") ")
+                        if((selectedFeeling?.isEmpty) != nil){
+                            HStack {
+                                Text("You're feeling \(selectedFeeling ?? "") ")
+                                    .padding(.vertical, 5)
+                                    .padding( .bottom, 10)
+                                Spacer()
+                            }
+                        }
                     }
                 }
-                .padding(.bottom)
-                
-//                List {
-//                    ForEach(reflections, id: \.self){reflection in
-//                        Text(reflection)
-//                    }
-//                }
-//                .frame(height: 200)
-                
-                // Reflections
-    //            List {
-    //                ForEach(reflections, id: \.self){reflection in
-    //                    Text(reflection)
-    //                }
-    //            }
-                
-                
-    //            VStack {
-    //                LazyHGrid(rows: rows) {
-    //                    ForEach(reflections, id: \.self){ reflection in
-    //                        Text(reflection)
-    //                            .padding(.horizontal, 20)
-    //                            .padding(.vertical, 5)
-    //                            .background(.blue.opacity(0.7))
-    //                            .foregroundColor(.white)
-    //                            .cornerRadius(20)
-    //                    }
-    //                }
-    //            }
-    //            .frame(width: 390, height: 200)
-    //            .background(.bar)
-    //            .cornerRadius(10)
+                .padding(.top, 10)
+                .sheet(isPresented: $showSelectFeelings){
+                    List {
+                        ForEach(feelings, id: \.self){ feel in
+                            FeelingSelection(title: feel, selectedItem: $selectedFeeling)
+                        }
+                    }
+                }
             }
-//            .frame(height: .infinity)
-//        }
+            
+            Button(action: {
+                submit()
+            }){
+                Text("Save")
+            }
+
+        }
+        .frame(height: 650)
+    }
+    
+    func randomSubmitedImage() -> String {
+        var result: String = ""
+        for image:String in listOfImage {
+            if(name.capitalized == image){
+                result = image
+            }
+        }
+        
+        return result
+    }
+    
+    func submit() -> Void {
+        todayMeals.append(
+            TodayMeals(
+                id: todayMeals.count + 1, name: name, time: "10:02", timesOfEat: todayMeals.count + 1, image: randomSubmitedImage(), category: "meal", reflections: selectedReflection, feeling: selectedFeeling ?? "happy"
+            )
+        )
+        mode.wrappedValue.dismiss()
     }
     
     func loadImage() -> Void {
@@ -193,27 +201,9 @@ struct MealFormView: View {
     }
 }
 
-struct MultipleReflectionSelection: View {
-    
-    var title: String
-    var isSelected: Bool
-    var action: () -> Void
- 
-    var body: some View {
-        Button(action: self.action) {
-            HStack {
-                Text(self.title)
-                if self.isSelected {
-                    Spacer()
-                    Image(systemName: "checkmark")
-                }
-            }
-        }
-    }
-}
-
 struct MealFormView_Previews: PreviewProvider {
+    @State private static var dummy: [TodayMeals] = []
     static var previews: some View {
-        MealFormView()
+        MealFormView(todayMeals: $dummy)
     }
 }
