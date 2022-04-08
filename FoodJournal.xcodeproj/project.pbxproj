@@ -20,10 +20,12 @@
 		3928F3BF27F9C4A400000143 /* TodayMealCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928F3BE27F9C4A400000143 /* TodayMealCard.swift */; };
 		3928F3C127F9FBEB00000143 /* AllRecapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928F3C027F9FBEB00000143 /* AllRecapCard.swift */; };
 		3928F3C327F9FC2B00000143 /* AllRecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928F3C227F9FC2B00000143 /* AllRecapView.swift */; };
+		3932CA8A27FF5A4600F53FA4 /* MultipleReflectionSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3932CA8927FF5A4600F53FA4 /* MultipleReflectionSelection.swift */; };
 		3990657F27FB2D79001043EF /* TodayMealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3990657E27FB2D79001043EF /* TodayMealModel.swift */; };
 		39D9D5B527FDB7C000CF846F /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D9D5B427FDB7C000CF846F /* FormView.swift */; };
 		39D9D5B727FDBC6000CF846F /* GlobalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D9D5B627FDBC6000CF846F /* GlobalEnum.swift */; };
 		39D9D5BC27FDBEC500CF846F /* BeverageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D9D5BB27FDBEC500CF846F /* BeverageFormView.swift */; };
+		39DA9EF628007F7400652BC6 /* FeelingSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DA9EF528007F7400652BC6 /* FeelingSelection.swift */; };
 		39ECE82027F99B71002EBEAF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ECE81F27F99B71002EBEAF /* TabBar.swift */; };
 		39ECE82227F99D78002EBEAF /* RecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ECE82127F99D78002EBEAF /* RecapView.swift */; };
 		39F353A427FC9D09004C552B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F353A327FC9D09004C552B /* ImagePicker.swift */; };
@@ -44,10 +46,12 @@
 		3928F3BE27F9C4A400000143 /* TodayMealCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMealCard.swift; sourceTree = "<group>"; };
 		3928F3C027F9FBEB00000143 /* AllRecapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecapCard.swift; sourceTree = "<group>"; };
 		3928F3C227F9FC2B00000143 /* AllRecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecapView.swift; sourceTree = "<group>"; };
+		3932CA8927FF5A4600F53FA4 /* MultipleReflectionSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleReflectionSelection.swift; sourceTree = "<group>"; };
 		3990657E27FB2D79001043EF /* TodayMealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMealModel.swift; sourceTree = "<group>"; };
 		39D9D5B427FDB7C000CF846F /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		39D9D5B627FDBC6000CF846F /* GlobalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEnum.swift; sourceTree = "<group>"; };
 		39D9D5BB27FDBEC500CF846F /* BeverageFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeverageFormView.swift; sourceTree = "<group>"; };
+		39DA9EF528007F7400652BC6 /* FeelingSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingSelection.swift; sourceTree = "<group>"; };
 		39ECE81F27F99B71002EBEAF /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		39ECE82127F99D78002EBEAF /* RecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapView.swift; sourceTree = "<group>"; };
 		39F353A327FC9D09004C552B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -122,7 +126,7 @@
 		3928F3BB27F9C38200000143 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				39D9D5B827FDBCF300CF846F /* TabBar */,
+				3932CA8827FF5A2E00F53FA4 /* Selection */,
 				3990659E27FC9BF6001043EF /* ImagePicker */,
 				3928F3C527FA011600000143 /* AllRecap */,
 				3928F3C427FA010500000143 /* TodayMeal */,
@@ -144,8 +148,18 @@
 			children = (
 				3928F3C027F9FBEB00000143 /* AllRecapCard.swift */,
 				3928F3C227F9FC2B00000143 /* AllRecapView.swift */,
+				39D9D5B827FDBCF300CF846F /* TabBar */,
 			);
 			path = AllRecap;
+			sourceTree = "<group>";
+		};
+		3932CA8827FF5A2E00F53FA4 /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				3932CA8927FF5A4600F53FA4 /* MultipleReflectionSelection.swift */,
+				39DA9EF528007F7400652BC6 /* FeelingSelection.swift */,
+			);
+			path = Selection;
 			sourceTree = "<group>";
 		};
 		397B79E527FAD5E500BD3A80 /* Model */ = {
@@ -258,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3928F3B827F9BEA900000143 /* DailyRecap.swift in Sources */,
+				39DA9EF628007F7400652BC6 /* FeelingSelection.swift in Sources */,
 				3928F3BD27F9C48800000143 /* TodayMealScrollView.swift in Sources */,
 				3928F3C127F9FBEB00000143 /* AllRecapCard.swift in Sources */,
 				39F353A427FC9D09004C552B /* ImagePicker.swift in Sources */,
@@ -274,6 +289,7 @@
 				39ECE82027F99B71002EBEAF /* TabBar.swift in Sources */,
 				3928F3BF27F9C4A400000143 /* TodayMealCard.swift in Sources */,
 				39D9D5B727FDBC6000CF846F /* GlobalEnum.swift in Sources */,
+				3932CA8A27FF5A4600F53FA4 /* MultipleReflectionSelection.swift in Sources */,
 				3928F3BA27F9BFB700000143 /* TodayRecap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
