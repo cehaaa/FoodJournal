@@ -11,16 +11,7 @@ struct FormView: View {
     
     @State private var selectedForm: FormCategory = .meal
     
-    init(){
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.systemBlue
-        
-        let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor : UIColor.white
-        ]
-        
-        UISegmentedControl.appearance().setTitleTextAttributes(attributes, for: .selected)
-
-    }
+    @Binding var todayMeals: [TodayMeals]
     
     var body: some View {
         ScrollView(.vertical, showsIndicators:  false){
@@ -32,44 +23,35 @@ struct FormView: View {
                     }
                 }
                 .pickerStyle(.segmented)
+                .padding([.horizontal, .top])
 
-                ChoosenForm(selectedForm: selectedForm)
+                ChoosenForm(todayMeals: $todayMeals, selectedForm: selectedForm)
 
             }
-            .padding()
         }
-        
-//        VStack {
-//            Picker("Choose a category", selection: $selectedForm) {
-//                ForEach(FormCategory.allCases, id: \.self){
-//                    Text($0.rawValue)
-//                }
-//            }
-//            .pickerStyle(.segmented)
-//
-//            ChoosenForm(selectedForm: selectedForm)
-//        }
-//        .padding()
     }
 }
 
 struct ChoosenForm: View {
+    
+    @Binding var todayMeals: [TodayMeals]
+    
     var selectedForm: FormCategory
     
     var body: some View {
         switch selectedForm {
         case .meal:
-            MealFormView()
+            MealFormView(todayMeals: $todayMeals)
             
         case .beverage:
-            BeverageFormView()
+            BeverageFormView(todayMeals: $todayMeals)
         }
     }
 }
 
 struct FormView_Previews: PreviewProvider {
+    @State private static var dummy: [TodayMeals] = []
     static var previews: some View {
-        FormView()
-            .preferredColorScheme(.light)
+        FormView(todayMeals: $dummy)
     }
 }
