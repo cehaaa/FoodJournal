@@ -8,15 +8,25 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @State var todayMealsDummy: [TodayMeals] = [
+        TodayMeals(id: 1, name: "Dimsum", time: "20:00", timesOfEat: 1, image: "Dimsum", category: "meal", reflections: ["The taste", "It was time"], feeling: "happy"),
+        TodayMeals(id: 2, name: "Omelet", time: "21:00", timesOfEat: 2, image: "Omelet", category: "meal", reflections: ["Why not ?"], feeling: "sad"),
+        TodayMeals(id: 3, name: "Pancake", time: "22:00", timesOfEat: 3, image: "Pancake", category: "meal", reflections: ["Why not ?", "Social"], feeling: "grateful"),
+    ]
+    
     var body: some View {
-        
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     
-                    NavigationLink(destination: FormView()){
+                    NavigationLink(destination: FormView(todayMeals: $todayMealsDummy)){
                         Text("Add meal")
                     }
+                    
+//                    NavigationLink(destination: FormView()){
+//                        Text("Add meal")
+//                    }
                     
                     // today meal title section
                     HStack(alignment: .center) {
@@ -26,7 +36,7 @@ struct HomeView: View {
 
                         Spacer()
 
-                        NavigationLink(destination: TodayRecap()){
+                        NavigationLink(destination: TodayRecap(todayMeals: $todayMealsDummy)){
                             Text("view more")
                         }
                     }
@@ -34,7 +44,7 @@ struct HomeView: View {
                     // end today meal title section
 
                     // today meal collections
-                    TodayMealScrollView(todayMeals: TodayMeals.all)
+                    TodayMealScrollView(todayMeals: todayMealsDummy)
                     // end today meal collections
                     
                     // all recaps title section
