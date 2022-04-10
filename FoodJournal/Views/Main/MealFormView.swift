@@ -17,7 +17,6 @@ struct MealFormView: View {
     
     @State private var time: Date = Date.now
     @State private var name: String = ""
-    @State private var feeling: String = ""
     
     @State private var showSelectReflections: Bool = false
     @State private var selectedReflection: [String] = []
@@ -144,7 +143,6 @@ struct MealFormView: View {
                     
 
                     VStack(alignment: .leading) {
-//                        Text("You're feeling \(selectedFeeling ?? "") ")
                         if((selectedFeeling?.isEmpty) != nil){
                             HStack {
                                 Text("You're feeling \(selectedFeeling ?? "") ")
@@ -186,10 +184,19 @@ struct MealFormView: View {
         return result
     }
     
+    
+    func formatTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let formattedTime = formatter.string(from: time)
+        
+        return formattedTime
+    }
+    
     func submit() -> Void {
         todayMeals.append(
             TodayMeals(
-                id: todayMeals.count + 1, name: name, time: "10:02", timesOfEat: todayMeals.count + 1, image: randomSubmitedImage(), category: "meal", reflections: selectedReflection, feeling: selectedFeeling ?? "happy"
+                id: todayMeals.count + 1, name: name, time: formatTime(), timesOfEat: todayMeals.count + 1, image: randomSubmitedImage(), category: "meal", reflections: selectedReflection, feeling: selectedFeeling!, volume: 0
             )
         )
         mode.wrappedValue.dismiss()

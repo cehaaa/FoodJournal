@@ -17,9 +17,8 @@ struct BeverageFormView: View {
     
     @State private var time: Date = Date.now
     @State private var name: String = ""
-    @State private var feeling: String = ""
     
-    @State private var volume: String = ""
+    @State private var volume: Int = 0
     
     @State private var showSelectReflections: Bool = false
     @State private var selectedReflection: [String] = []
@@ -74,8 +73,9 @@ struct BeverageFormView: View {
                     .disableAutocorrection(true)
                 
                 // Volume
-                TextField("300mL", text: $volume)
+                TextField("300mL", value: $volume, format: .number)
                     .disableAutocorrection(true)
+                    .keyboardType(.decimalPad)
                 
                 // Date
                 DatePicker("Selent a time", selection: $time, displayedComponents: .hourAndMinute)
@@ -145,7 +145,6 @@ struct BeverageFormView: View {
                     
                     
                     VStack(alignment: .leading) {
-                        //                        Text("You're feeling \(selectedFeeling ?? "") ")
                         if((selectedFeeling?.isEmpty) != nil){
                             HStack {
                                 Text("You're feeling \(selectedFeeling ?? "") ")
@@ -193,7 +192,7 @@ struct BeverageFormView: View {
     func submit() -> Void {
         todayMeals.append(
             TodayMeals(
-                id: todayMeals.count + 1, name: name, time: formatTime(), timesOfEat: todayMeals.count + 1, image: "Dimsum", category: "beverage", reflections: selectedReflection, feeling: feeling
+                id: todayMeals.count + 1, name: name, time: formatTime(), timesOfEat: todayMeals.count + 1, image: "Dimsum", category: "beverage", reflections: selectedReflection, feeling: selectedFeeling!, volume: volume
             )
         )
         mode.wrappedValue.dismiss()
