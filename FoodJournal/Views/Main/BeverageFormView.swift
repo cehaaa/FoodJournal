@@ -78,7 +78,7 @@ struct BeverageFormView: View {
                     .keyboardType(.decimalPad)
                 
                 // Date
-                DatePicker("Selent a time", selection: $time, displayedComponents: .hourAndMinute)
+                DatePicker("Select a time", selection: $time, displayedComponents: .hourAndMinute)
             }
             
             Section {
