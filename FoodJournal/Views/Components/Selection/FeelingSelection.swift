@@ -17,7 +17,7 @@ struct FeelingSelection: View {
             self.selectedItem = self.title
         }){
             HStack {
-                Text(title)
+                Text(title.capitalized)
                 
                 Spacer()
                 

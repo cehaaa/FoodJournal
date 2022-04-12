@@ -10,13 +10,11 @@ import SwiftUI
 struct FormView: View {
     
     @State private var selectedForm: FormCategory = .meal
-    
     @Binding var todayMeals: [TodayMeals]
     
     var body: some View {
         ScrollView(.vertical, showsIndicators:  false){
             VStack {
-
                 Picker("Choose a category", selection: $selectedForm) {
                     ForEach(FormCategory.allCases, id: \.self){
                         Text($0.rawValue)
@@ -24,11 +22,11 @@ struct FormView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding([.horizontal, .top])
-
+                
                 ChoosenForm(todayMeals: $todayMeals, selectedForm: selectedForm)
-
             }
         }
+        .navigationBarTitle(Text(""), displayMode: .inline)
     }
 }
 
