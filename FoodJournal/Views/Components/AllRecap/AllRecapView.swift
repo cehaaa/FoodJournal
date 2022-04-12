@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct AllRecapView: View {
+    
+    @Binding var allRecaps: [DailyRecaps]
+    
     var body: some View {
-//        AllRecapCard()
         VStack(spacing: 10.0){
-            AllRecapCard()
+            ForEach(allRecaps, id: \.id){ meal in
+                NavigationLink(destination: RecapHistory(history: meal)){
+                    AllRecapCard(daily: meal)
+                }
+            }
         }
-    }
-}
-
-struct AllRecapView_Previews: PreviewProvider {
-    static var previews: some View {
-        AllRecapView()
     }
 }
